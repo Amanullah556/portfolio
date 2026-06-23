@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 const PROJECTS = [
     {
         index: "01",
-        title: "Nimbus Analytics",
-        category: "Data Dashboard",
+        title: "portfolio",
+        category: "",
         description:
-            "A real-time analytics dashboard with custom charting, role-based access, and sub-second data refresh across distributed sources.",
+            "A professional portfolio showcasing real-world projects, web development expertise, technical skills, and practical solutions delivered for clients. Built to demonstrate experience in creating modern, responsive, and user-friendly web applications.",
         tags: ["React", "TypeScript", "WebSocket"],
         image:
-            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+            "./src/assets/portfolio.png",
         liveUrl: "#",
         codeUrl: "#",
     },
