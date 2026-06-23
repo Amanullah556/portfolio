@@ -10,7 +10,7 @@ const PROJECTS = [
             "A professional portfolio showcasing real-world projects, web development expertise, technical skills, and practical solutions delivered for clients. Built to demonstrate experience in creating modern, responsive, and user-friendly web applications.",
         tags: ["React", "TypeScript", "WebSocket"],
         image:
-            "./src/assets/portfolio.png",
+            "/portfolio.png",
         liveUrl: "#",
         codeUrl: "#",
     },
