@@ -1,4 +1,8 @@
+
 import { motion } from "framer-motion";
+
+const GOLD = "#D4AF37";
+const GOLD_LIGHT = "#FFE8A3";
 
 const SOCIALS = [
   {
@@ -79,59 +83,67 @@ const RESOURCES = [
   { label: "Source Code", href: "https://github.com/amanullah556" },
 ];
 
+const headingClass =
+  "mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37]";
+
+const linkClass =
+  "inline-flex text-sm text-white/50 transition-colors duration-300 hover:translate-x-1 hover:text-[#FFE8A3]";
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative w-full overflow-hidden border-t border-white/10 bg-[#05050a] px-6 pt-20 pb-8 text-white">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-0 h-72 w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+    <footer className="relative isolate w-full overflow-hidden border-t border-[#D4AF37]/20 bg-[#050505] px-5 pb-8 pt-16 text-white sm:px-8 sm:pt-20 lg:px-10">
+      {/* Background lighting */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-0 h-72 w-[40rem] max-w-full -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D4AF37]/[0.09] blur-[100px]" />
+        <div className="absolute -bottom-36 -left-24 h-72 w-72 rounded-full bg-[#80651D]/[0.07] blur-[100px]" />
+        <div className="absolute -bottom-40 -right-24 h-80 w-80 rounded-full bg-[#D4AF37]/[0.04] blur-[110px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-12 pb-14 md:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
-          {/* Brand + tagline */}
+      <div className="relative mx-auto max-w-7xl">
+        {/* Main footer columns */}
+        <div className="grid grid-cols-1 gap-10 border-b border-white/[0.08] pb-12 sm:grid-cols-2 sm:gap-12 sm:pb-14 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr] lg:gap-10">
+          {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xl font-semibold tracking-wide">
-              Mr<span className="text-cyan-400">.Aman</span>
-            </span>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
-              Full Stack Developer <br />
+            <a href="#home" className="inline-flex items-center gap-1 text-2xl font-bold tracking-tight">
+              Mr<span className="text-[#D4AF37]">.Aman</span>
+              <span className="ml-1 h-1.5 w-1.5 rounded-full bg-[#FFE8A3]" />
+            </a>
+
+            <p className="mt-4 max-w-xs text-sm leading-7 text-white/50">
+              Full Stack Developer
+              <br />
               Flutter App Developer
             </p>
 
-            <div className="mt-6 flex items-center gap-2 text-xs text-white/40">
+            <div className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-[#D4AF37]/15 bg-[#D4AF37]/[0.04] px-3.5 py-2 text-xs text-white/55">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D4AF37] opacity-40" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#D4AF37]" />
               </span>
               Available for freelance work
             </div>
           </motion.div>
 
-          {/* Navigate */}
+          {/* Navigation */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.05 }}
           >
-            <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white/70">
-              Navigate
-            </h4>
-            <ul className="flex flex-col gap-3">
+            <h4 className={headingClass}>Navigate</h4>
+
+            <ul className="flex flex-col items-start gap-3.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-white/50 transition-colors duration-200 hover:text-cyan-300"
-                  >
+                  <a href={link.href} className={linkClass}>
                     {link.label}
                   </a>
                 </li>
@@ -141,22 +153,21 @@ export default function Footer() {
 
           {/* Resources */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white/70">
-              Resources
-            </h4>
-            <ul className="flex flex-col gap-3">
+            <h4 className={headingClass}>Resources</h4>
+
+            <ul className="flex flex-col items-start gap-3.5">
               {RESOURCES.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="text-sm text-white/50 transition-colors duration-200 hover:text-cyan-300"
+                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className={linkClass}
                   >
                     {link.label}
                   </a>
@@ -165,17 +176,16 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Social icons */}
+          {/* Social links */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <h4 className="mb-5 text-sm font-semibold uppercase tracking-wider text-white/70">
-              Connect
-            </h4>
-            <div className="grid grid-cols-3 gap-3">
+            <h4 className={headingClass}>Connect</h4>
+
+            <div className="grid max-w-[190px] grid-cols-3 gap-3">
               {SOCIALS.map((social) => (
                 <motion.a
                   key={social.name}
@@ -183,37 +193,52 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  whileHover={{ y: -4, scale: 1.08 }}
+                  title={social.name}
+                  whileHover={{ y: -4, scale: 1.05 }}
                   whileTap={{ scale: 0.94 }}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/60 backdrop-blur-xl transition-colors duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/[0.08] hover:text-cyan-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+                  className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.09] bg-white/[0.035] text-white/60 transition-all duration-300 hover:border-[#D4AF37]/45 hover:bg-[#D4AF37]/[0.09] hover:text-[#FFE8A3] hover:shadow-[0_0_22px_rgba(212,175,55,0.12)]"
                 >
                   {social.icon}
                 </motion.a>
               ))}
             </div>
+
+            <p className="mt-4 text-xs leading-5 text-white/35">
+              Let&apos;s connect and build something meaningful.
+            </p>
           </motion.div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-
         {/* Bottom bar */}
-        <div className="flex flex-col items-center justify-between gap-4 pt-6 text-xs text-white/40 sm:flex-row">
-          <p>© {year} Mr Aman. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="transition-colors hover:text-cyan-300">
+        <div className="flex flex-col items-center justify-between gap-5 pt-7 text-center sm:flex-row sm:text-left">
+          <p className="text-xs leading-6 text-white/40">
+            © {year} <span className="font-medium text-white/65">Mr.Aman</span>.
+            All rights reserved.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/40">
+            <a href="#" className="transition-colors hover:text-[#FFE8A3]">
               Privacy Policy
             </a>
-            <a href="#" className="transition-colors hover:text-cyan-300">
+            <span className="h-1 w-1 rounded-full bg-[#D4AF37]/60" />
+            <a href="#" className="transition-colors hover:text-[#FFE8A3]">
               Terms of Use
             </a>
           </div>
-          <p className="flex items-center gap-1.5">
-            Built with
-            <span className="text-cyan-400">React</span>
-            &amp;
-            <span className="text-purple-400">Tailwind CSS</span>
+
+          <p className="flex flex-wrap items-center justify-center gap-1.5 text-xs text-white/40">
+            Crafted with
+            <span className="text-[#D4AF37]">React</span>
+            <span className="text-white/25">&amp;</span>
+            <span className="text-[#FFE8A3]">Tailwind CSS</span>
           </p>
+        </div>
+
+        {/* Gold finishing line */}
+        <div className="mt-7 flex items-center justify-center gap-3">
+          <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4AF37]/40" />
+          <span className="h-1.5 w-1.5 rotate-45 border border-[#D4AF37]/70 bg-[#D4AF37]/20" />
+          <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4AF37]/40" />
         </div>
       </div>
     </footer>

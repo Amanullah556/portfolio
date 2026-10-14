@@ -1,14 +1,10 @@
 // components/ui/FloatingShape.jsx
 import { motion } from "framer-motion";
 
-export default function FloatingShape({
-  className,
-  duration = 12,
-  delay = 0,
-}) {
+export default function FloatingShape({ className, duration = 12, delay = 0 }) {
   return (
     <motion.div
-      className={`absolute rounded-full blur-3xl ${className}`}
+      className={`absolute rounded-full ${className}`}
       animate={{
         y: [0, -30, 0],
         x: [0, 20, 0],

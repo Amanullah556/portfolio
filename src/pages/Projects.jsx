@@ -1,206 +1,258 @@
-import  { useRef, useState } from "react";
+
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const PROJECTS = [
-    {
-        index: "01",
-        title: "portfolio",
-        category: "",
-        description:
-            "A professional portfolio showcasing real-world projects, web development expertise, technical skills, and practical solutions delivered for clients. Built to demonstrate experience in creating modern, responsive, and user-friendly web applications.",
-        tags: ["React", "TypeScript", "WebSocket"],
-        image:
-            "/portfolio.png",
-        liveUrl: "#",
-        codeUrl: "#",
-    },
-    {
-        index: "02",
-        title: "Pulse Commerce",
-        category: "E-Commerce Platform",
-        description:
-            "Headless storefront with optimistic cart updates, Stripe checkout, and edge-cached product pages for instant loads.",
-        tags: ["Next.js", "Tailwind", "Stripe"],
-        image:
-            "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1200&auto=format&fit=crop",
-        liveUrl: "#",
-        codeUrl: "#",
-    },
-    {
-        index: "03",
-        title: "Orbit Workspace",
-        category: "Collaboration Tool",
-        description:
-            "A real-time project management suite with drag-and-drop boards, live multiplayer cursors, and instant notifications.",
-        tags: ["React", "Framer Motion", "Socket.io"],
-        image:
-            "https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=1200&auto=format&fit=crop",
-        liveUrl: "#",
-        codeUrl: "#",
-    },
-    {
-        index: "04",
-        title: "Vertex CMS",
-        category: "Content Platform",
-        description:
-            "A headless CMS with a visual block editor, granular permissions, and instant preview across staging environments.",
-        tags: ["React", "GraphQL", "Node.js"],
-        image:
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-        liveUrl: "#",
-        codeUrl: "#",
-    },
+  {
+    index: "01",
+    title: "Smart Khyber Pakhtunkhwa",
+    category: "Digital Governance",
+    description:
+      "A unified digital platform concept connecting Health, Education, Agriculture, Transport, and Tourism information across Khyber Pakhtunkhwa.",
+    tags: ["React", "Tailwind CSS", "Governance"],
+    image:
+      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=1400&auto=format&fit=crop",
+    liveUrl: "#",
+    codeUrl: "#",
+  },
+  {
+    index: "02",
+    title: "Personal Portfolio",
+    category: "Web Development",
+    description:
+      "A modern developer portfolio featuring interactive animations, a premium dark theme, responsive layouts, and project showcases.",
+    tags: ["React", "Framer Motion", "Tailwind CSS"],
+    image: "/portfolio.png",
+    liveUrl: "#",
+    codeUrl: "#",
+  },
+  {
+    index: "03",
+    title: "SkillBridge",
+    category: "Learning Platform",
+    description:
+      "A learning platform concept designed to help students explore courses, develop practical skills, build projects, and discover career opportunities.",
+    tags: ["React", "JavaScript", "LMS"],
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1400&auto=format&fit=crop",
+    liveUrl: "#",
+    codeUrl: "#",
+  },
+  {
+    index: "04",
+    title: "ShopFlow",
+    category: "POS & Inventory",
+    description:
+      "A business dashboard concept for managing products, point-of-sale operations, inventory levels, and business reports.",
+    tags: ["React", "Recharts", "Dashboard"],
+    image:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1400&auto=format&fit=crop",
+    liveUrl: "#",
+    codeUrl: "#",
+  },
+  {
+    index: "05",
+    title: "Pulse Commerce",
+    category: "E-Commerce",
+    description:
+      "A modern shopping experience concept with attractive product presentation, intuitive browsing, and a responsive user interface.",
+    tags: ["React", "E-Commerce", "UI Design"],
+    image:
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=1400&auto=format&fit=crop",
+    liveUrl: "#",
+    codeUrl: "#",
+  },
+  {
+    index: "06",
+    title: "Orbit Workspace",
+    category: "Project Management",
+    description:
+      "A productivity dashboard concept for organizing projects, tracking tasks, coordinating teams, and viewing progress in one place.",
+    tags: ["React", "JavaScript", "Productivity"],
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1400&auto=format&fit=crop",
+    liveUrl: "#",
+    codeUrl: "#",
+  },
 ];
 
 function ProjectCard({ project, i }) {
-    const cardRef = useRef(null);
-    const [spot, setSpot] = useState({ x: 50, y: 50, active: false });
+  const cardRef = useRef(null);
 
-    function handleMouseMove(e) {
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        setSpot({ x, y, active: true });
-    }
+  const [spot, setSpot] = useState({
+    x: 50,
+    y: 50,
+    active: false,
+  });
 
-    return (
-        <motion.div
-            ref={cardRef}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.55, delay: i * 0.08, ease: "easeOut" }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={() => setSpot((s) => ({ ...s, active: false }))}
-            whileHover={{ y: -10 }}
-            className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-colors duration-300 hover:border-cyan-400/30"
-            style={{
-                boxShadow: spot.active
-                    ? "0 30px 60px -15px rgba(0,0,0,0.6)"
-                    : "0 10px 30px -10px rgba(0,0,0,0.5)",
-            }}
-        >
-            {/* Cursor spotlight */}
-            <div
-                className="pointer-events-none absolute inset-0 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                style={{
-                    background: `radial-gradient(280px circle at ${spot.x}% ${spot.y}%, rgba(34,211,238,0.12), transparent 70%)`,
-                }}
-            />
+  function handleMouseMove(e) {
+    if (!cardRef.current) return;
 
-            {/* Image */}
-            <div className="relative h-56 w-full overflow-hidden md:h-64">
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#05050a] via-[#05050a]/30 to-transparent" />
+    const rect = cardRef.current.getBoundingClientRect();
 
-                {/* Index number watermark */}
-                <span className="absolute right-4 top-4 select-none font-mono text-5xl font-bold text-white/10 transition-colors duration-300 group-hover:text-cyan-400/20">
-                    {project.index}
-                </span>
+    setSpot({
+      x: ((e.clientX - rect.left) / rect.width) * 100,
+      y: ((e.clientY - rect.top) / rect.height) * 100,
+      active: true,
+    });
+  }
 
-                {/* Category chip */}
-                <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[11px] uppercase tracking-wider text-white/70 backdrop-blur-md">
-                    {project.category}
-                </span>
-            </div>
+  return (
+    <motion.article
+      ref={cardRef}
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{
+        duration: 0.5,
+        delay: (i % 3) * 0.08,
+        ease: "easeOut",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() =>
+        setSpot((prev) => ({ ...prev, active: false }))
+      }
+      whileHover={{ y: -6 }}
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.09] bg-[#0b0b0b] transition-colors duration-300 hover:border-[#D4AF37]/40"
+    >
+      {/* Subtle cursor highlight */}
+      <div
+        className="pointer-events-none absolute inset-0 z-10 transition-opacity duration-300"
+        style={{
+          opacity: spot.active ? 1 : 0,
+          background: `radial-gradient(250px circle at ${spot.x}% ${spot.y}%, rgba(212,175,55,0.045), transparent 75%)`,
+        }}
+      />
 
-            {/* Body */}
-            <div className="relative z-10 flex flex-col gap-4 p-7">
-                <h3 className="text-xl font-semibold text-white transition-colors duration-300 group-hover:text-cyan-300">
-                    {project.title}
-                </h3>
+      {/* Project Image */}
+      <div className="relative h-52 overflow-hidden bg-[#111] sm:h-56 lg:h-60">
+        <img
+          src={project.image}
+          alt={`${project.title} project preview`}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
 
-                <p className="text-sm leading-relaxed text-white/55">
-                    {project.description}
-                </p>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b0b] via-black/10 to-black/25" />
 
-                <div className="flex flex-wrap gap-2 pt-1">
-                    {project.tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/60 transition-colors duration-300 group-hover:border-cyan-400/30 group-hover:text-cyan-300"
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
+        <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/65 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.15em] text-white/85 backdrop-blur-sm">
+          {project.category}
+        </span>
 
-                <div className="mt-3 flex items-center gap-4 border-t border-white/10 pt-5">
-                    <motion.a
-                        href={project.liveUrl}
-                        whileHover={{ x: 4 }}
-                        className="flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-cyan-300"
-                    >
-                        Live Demo
-                        <span aria-hidden className="text-cyan-400">
-                            →
-                        </span>
-                    </motion.a>
-                    <span className="text-white/15">|</span>
-                    <motion.a
-                        href={project.codeUrl}
-                        whileHover={{ x: 4 }}
-                        className="flex items-center gap-2 text-sm font-medium text-white/50 transition-colors hover:text-white"
-                    >
-                        Source Code
-                    </motion.a>
-                </div>
-            </div>
+        <span className="absolute right-4 top-3 font-mono text-4xl font-bold text-white/40 transition-colors duration-300 group-hover:text-[#D4AF37]">
+          {project.index}
+        </span>
 
-            {/* Bottom glow line on hover */}
-            <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-cyan-400 to-purple-500 transition-all duration-500 group-hover:w-full" />
-        </motion.div>
-    );
+        <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#D4AF37] transition-all duration-500 group-hover:w-full" />
+      </div>
+
+      {/* Project Details */}
+      <div className="relative z-20 flex flex-1 flex-col p-5">
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <h3 className="text-xl font-semibold leading-snug text-white transition-colors duration-300 group-hover:text-[#D4AF37]">
+            {project.title}
+          </h3>
+
+          <span className="shrink-0 text-xl text-[#D4AF37] transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
+            ↗
+          </span>
+        </div>
+
+        <p className="mb-5 text-sm leading-7 text-white/55">
+          {project.description}
+        </p>
+
+        {/* Technologies */}
+        <div className="mb-6 flex flex-wrap gap-2">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-md border border-white/10 bg-white/[0.035] px-2.5 py-1.5 text-[11px] text-white/65 transition-colors duration-300 group-hover:border-[#D4AF37]/25"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Project Buttons */}
+        <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-white/[0.09] pt-5">
+          <motion.a
+            href={project.liveUrl}
+            whileHover={{ x: 3 }}
+            className="inline-flex items-center gap-2 rounded-lg bg-[#D4AF37] px-3 py-2.5 text-xs font-semibold text-black transition-colors hover:bg-[#f0d477]"
+          >
+            Live Preview
+            <span aria-hidden="true">↗</span>
+          </motion.a>
+
+          <motion.a
+            href={project.codeUrl}
+            whileHover={{ x: 3 }}
+            className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2.5 text-xs font-medium text-white/70 transition-colors hover:border-[#D4AF37]/40 hover:text-[#D4AF37]"
+          >
+            Source Code
+          </motion.a>
+        </div>
+      </div>
+    </motion.article>
+  );
 }
 
 export default function Project() {
-    return (
-        <section
-            id="projects"
-            className="relative w-full bg-[#05050a] px-6 py-24 text-white md:py-32"
+  return (
+    <section
+      id="projects"
+      className="relative mx-3 overflow-hidden bg-[#050505] py-16 text-white sm:mx-4 sm:py-20 lg:mx-6 lg:py-24"
+    >
+      {/* Full-width content */}
+      <div className="relative w-full">
+        {/* Centered Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-10 flex justify-center text-center sm:mb-14"
         >
-            {/* Ambient backdrop */}
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute left-1/2 top-0 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
-            </div>
+          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+            My 
+            
+            <span className="bg-gradient-to-r from-[#D4AF37] via-[#FFE8A3] to-[#B58A20] bg-clip-text text-transparent">
+              Projects.
+            </span>
+          </h2>
+        </motion.div>
 
-            <div className="relative mx-auto max-w-6xl">
-                {/* Section header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-16 flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between"
-                >
-                    <div>
-                        <span className="mb-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-cyan-400">
-                            Selected Work
-                        </span>
-                        <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
-                            Featured{" "}
-                            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                                Projects
-                            </span>
-                        </h2>
-                    </div>
-                    <p className="max-w-sm text-sm leading-relaxed text-white/50 md:text-right">
-                        A curated selection of products I've designed and engineered end
-                        to end — from concept through production deployment.
-                    </p>
-                </motion.div>
+        {/* Project Cards: use full available width */}
+        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+          {PROJECTS.map((project, i) => (
+            <ProjectCard key={project.index} project={project} i={i} />
+          ))}
+        </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                    {PROJECTS.map((project, i) => (
-                        <ProjectCard key={project.title} project={project} i={i} />
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/[0.09] pt-6 text-center sm:mt-14 sm:flex-row sm:text-left"
+        >
+          <p className="text-sm text-white/45">
+            Turning ideas into meaningful digital experiences.
+          </p>
+
+          <a
+            href="/contact"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-[#D4AF37] transition-colors hover:text-[#FFE8A3]"
+          >
+            Let's work together
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              →
+            </span>
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

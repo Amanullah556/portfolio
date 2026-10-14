@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -56,7 +57,7 @@ export default function Navbar() {
             onClick={() => handleLinkClick("/")}
             className="text-lg font-semibold tracking-wide text-white"
           >
-            Mr<span className="text-cyan-400">.Aman</span>
+            Mr<span className="text-[#D4AF37]">.Aman</span>
           </Link>
             
           {/* Desktop links */}
@@ -72,7 +73,7 @@ export default function Navbar() {
 
                   {/* Animated underline */}
                   <span
-                    className={`absolute bottom-1 left-4 right-4 h-[2px] origin-left scale-x-0 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 transition-transform duration-300 group-hover:scale-x-100 ${activeLink === link.href ? "scale-x-100" : ""
+                    className={`absolute bottom-1 left-4 right-4 h-[2px] origin-left scale-x-0 rounded-full bg-gradient-to-r from-[#80651D] to-[#D4AF37] transition-transform duration-300 group-hover:scale-x-100 ${activeLink === link.href ? "scale-x-100" : ""
                       }`}
                   />
                 </Link>
@@ -89,7 +90,7 @@ export default function Navbar() {
             <Link
               to="/contact"
               onClick={() => handleLinkClick("/contact")}
-              className="rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 px-5 py-2 text-sm font-semibold text-black shadow-[0_0_20px_rgba(34,211,238,0.35)] transition-shadow hover:shadow-[0_0_30px_rgba(34,211,238,0.55)]"
+              className="rounded-xl bg-gradient-to-r from-[#80651D] to-[#D4AF37] px-5 py-2 text-sm font-semibold text-black shadow-[0_0_20px_rgba(212,175,55,0.35)] transition-shadow hover:shadow-[0_0_30px_rgba(212,175,55,0.55)]"
             >
               Let's Talk
             </Link>
@@ -150,7 +151,7 @@ export default function Navbar() {
               className="fixed right-0 top-0 z-40 flex h-full w-[78%] max-w-sm flex-col border-l border-white/10 bg-[#0a0a12]/95 px-8 pt-28 pb-10 backdrop-blur-2xl md:hidden"
             >
               {/* Ambient glow inside drawer */}
-              <div className="pointer-events-none absolute -right-20 top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
+              <div className="pointer-events-none absolute -right-20 top-20 h-64 w-64 rounded-full bg-[#D4AF37]/10 blur-3xl" />
 
               <ul className="relative flex flex-col gap-2">
                 {NAV_LINKS.map((link, i) => (
@@ -164,13 +165,13 @@ export default function Navbar() {
                       to={link.href}
                       onClick={() => handleLinkClick(link.href)}
                       className={`group flex items-center justify-between rounded-xl px-4 py-3.5 text-lg font-medium transition-colors duration-300 ${activeLink === link.href
-                          ? "bg-white/[0.06] text-cyan-300"
+                          ? "bg-white/[0.06] text-[#FFE8A3]"
                           : "text-white/70 hover:bg-white/[0.04] hover:text-white"
                         }`}
                     >
                       {link.label}
 
-                      <span className="text-cyan-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <span className="text-[#D4AF37] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         →
                       </span>
                     </Link>
@@ -188,7 +189,7 @@ export default function Navbar() {
                 <Link
                   to="/contact"
                   onClick={() => handleLinkClick("/contact")}
-                  className="block rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 px-5 py-3.5 text-center text-sm font-semibold text-black shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+                  className="block rounded-xl bg-gradient-to-r from-[#80651D] to-[#D4AF37] px-5 py-3.5 text-center text-sm font-semibold text-black shadow-[0_0_25px_rgba(212,175,55,0.4)]"
                 >
                   Let's Talk
                 </Link>
